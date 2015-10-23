@@ -1,7 +1,7 @@
 {
 	"name": "Quiz",
 	"version": "0.0.1",
-	"description": "Quiz is an online application for ",
+	"description": "Quiz is an online application.",
 	"dependencies": {
 		"angular": "^1.4.0",
 		"angular-aria": "^1.4.0",
