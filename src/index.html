@@ -1,11 +1,51 @@
 <html>
 
 <head>
-	<title>IQ Test</title>
+	<title>Playing With Two Version Of AngularJS</title>
 </head>
 
 <body>
-	as
+	<script data-require="angular.js@1.2.0-rc3" data-semver="1.2.0-rc3" src="http://code.angularjs.org/1.2.0-rc.3/angular.min.js"></script>
+
+	<script>
+		(function(window,angular){
+			var ng = angular;
+			
+			var versionController = function($scope){
+				$scope.version = angular.version;	
+			};
+			
+			var navigatorApp = ng.module("AppNavigator",[])
+				.controller("AppNavigatorController",versionController);
+			
+			var appNavigator = document.createElement("app-navigator");
+			appNavigator.id = "app-navigator";
+			appNavigator.innerHTML = "<div ng-controller ='AppNavigatorController'>{{version}}</div>"
+			document.body.appendChild(appNavigator);
+			ng.bootstrap(document.getElementById("app-navigator"),["AppNavigator"]);
+			
+			window.angular = null;
+		})(window,angular);
+	</script>
+
+	<script data-require="angular.js@1.0.8" data-semver="1.0.8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+
+	<script>
+		(function(window,angular){
+			var ng = angular;
+			
+			var versionController = function($scope){
+				$scope.version = angular.version;	
+			};
+			
+			ng.module("App2",[])
+				.controller("Ctrl2",versionController);
+			
+		})(window,angular);
+	</script>
+	<div ng-app="App2" ng-controller="Ctrl2">
+		{{version}}
+	</div>
 </body>
 
 </html>
